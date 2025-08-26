@@ -1,16 +1,17 @@
 use anchor_lang::prelude::*;
 
-declare_id!("89hAXJHytGv8kmdi6iRVbLhoA2diUNYaYFy19JF84qZF");
+mod state;
+mod errors;
+mod instructions;
+use instructions::*;
+
+declare_id!("22222222222222222222222222222222222222222222");
 
 #[program]
 pub mod blueshift_anchor_escrow {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
-        Ok(())
-    }
+    
 }
 
-#[derive(Accounts)]
-pub struct Initialize {}
+

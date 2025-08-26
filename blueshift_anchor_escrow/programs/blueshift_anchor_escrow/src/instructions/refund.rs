@@ -15,6 +15,7 @@ pub struct Refund<'info> {
     pub maker: Signer<'info>,
     #[account(
         mut,
+        close = maker,
         seeds = [b"escrow", maker.key().as_ref(), escrow.seed.to_le_bytes().as_ref()],
         bump = escrow.bump
     )]
@@ -30,7 +31,8 @@ pub struct Refund<'info> {
     pub vault: Box<InterfaceAccount<'info, TokenAccount>>,
 
     #[account(
-        mut,
+        init_if_needed,
+        payer = maker,
         associated_token::mint = mint_a,
         associated_token::authority = maker,
         associated_token::token_program = token_program
